@@ -72,11 +72,11 @@ class coreFunc():
 
         for i in range(0, len(ID), 2):
             if counter <= 2:
-                curr = curr + ID[i:i + 2] + '\\'
+                curr = curr + ID[i:i + 2] + '/'
                 self.createFolderIf(curr)
                 counter += 1
 
-        curr = curr + ID + "\\"
+        curr = curr + ID + "/"
         self.createFolderIf(curr)
         return curr
 
@@ -253,7 +253,7 @@ class coreFunc():
             self.zero.printText("+ Loading followed by list where PRIVATE = 0", True)
             followList = self.dbTool.getValueSQL(self.dbConn, self.zero.DB_SELECT_FOLLOW_OF, (currentNode, ))
             if followList == 0:
-                self.zero.printText("+ Are followed nobody that have PUBLIC profile.", True)
+                self.zero.printText("+ Is followed nobody that have PUBLIC profile.", True)
             else:
                 lenFollowList = len(followList)
                 counter = 0
@@ -266,7 +266,7 @@ class coreFunc():
                     self.zero.printText("+ Checking search status for: {}".format(i[3]), False)
                     moveON = self.dbTool.getValueSQL(self.dbConn, self.zero.DB_SELECT_DONE_NEW_INSTA, (i[3],))
                     if moveON[0][0] == 1:
-                        self.zero.printText("+ User SCAN are allready DONE.", True)
+                        self.zero.printText("+ User SCAN is allready DONE.", True)
                     else:
                         if moveON[0][1] == 1:
                             self.zero.printText("+ User NOT scanned but set on WAIT", True)
@@ -286,7 +286,7 @@ class coreFunc():
                                 scan_insta_follow = int(newDataUser.follows_count)
 
 
-                            self.zero.printText("+ User are following: {}\n+ User are followed by: {}".format(scan_insta_follow, scan_insta_followed_by), False)
+                            self.zero.printText("+ User is following: {}\n+ User is followed by: {}".format(scan_insta_follow, scan_insta_followed_by), False)
 
                             #Search sorting firt step follows_count
                             if scan_insta_follow <= getMaxValueFOLLOW:
@@ -332,26 +332,26 @@ class coreFunc():
             self.zero.printText("\n- Loading follows list for: {}".format(self.currentUser.username), True)
             self.followNumber = self.currentUser.follows_count;
             if self.followNumber != 0:
-                self.zero.printText("+ {} are following {} starting info extract.".format(self.currentUser.full_name, self.followNumber), False)
+                self.zero.printText("+ {} is following {} starting info extract.".format(self.currentUser.full_name, self.followNumber), False)
                 self.imported_follow = self.instaTool.get_insta_following(self.followNumber, self.currentUser.identifier)
                 self.lenImpF = len(self.imported_follow['accounts'])
                 self.zero.printText("+ Total loaded: {}".format(self.lenImpF), False)
                 continueScan = True
             else:
-                print("+ {} are following NOBODY, skipping this stage".format(self.currentUser.username))
+                print("+ {} is following NOBODY, skipping this stage".format(self.currentUser.username))
                 continueScan = False
         else:
             #Getting following
             self.zero.printText("\n- Loading followed by list for: {}".format(self.currentUser.username), True)
             self.followNumber = self.currentUser.followed_by_count;
             if self.followNumber != 0:
-                self.zero.printText("+ {} are followed by {} starting info extract".format(self.currentUser.full_name, self.followNumber), False)
+                self.zero.printText("+ {} is followed by {} starting info extract".format(self.currentUser.full_name, self.followNumber), False)
                 self.imported_follow = self.instaTool.get_insta_follow_by(self.followNumber, self.currentUser.identifier)
                 self.lenImpF = len(self.imported_follow['accounts'])
                 self.zero.printText("+ Total loaded: {}".format(self.lenImpF), False)
                 continueScan = True
             else:
-                print("+ {} are following NOBODY, skipping this stage".format(self.currentUser.username))
+                print("+ {} is following NOBODY, skipping this stage".format(self.currentUser.username))
                 continueScan = False
 
         return continueScan
@@ -402,7 +402,7 @@ class coreFunc():
                     self.zero.printText("+ STATUS = IN LINE", False)
 
     def getLabelforUser(self, user):
-        self.zero.printText("+ Are full_name empty?", False)
+        self.zero.printText("+ Is full_name empty?", False)
         if user.full_name:
             self.zero.printText("+ NO", False)
             self.zero.printText("+ Using: {} for label.".format(user.full_name), False)

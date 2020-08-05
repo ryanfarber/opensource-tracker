@@ -88,7 +88,7 @@ class Optracker():
         #Setusername
         self.sideTool.setupLogin()
         #Login Instagram
-        self.loginInstagram(instagram)
+        self.loginInstagram(self.instagram)
 
     def autoSelectAndLogin(self):
         #Find user
