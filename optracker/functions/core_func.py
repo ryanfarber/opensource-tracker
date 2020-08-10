@@ -202,7 +202,7 @@ class coreFunc():
                 while line:
                     if line != 0:
                         user = line.strip()
-                        zero.printText("+ Getting user info for {}:".format(user), True)
+                        self.zero.printText("+ Getting user info for {}:".format(user), True)
                         updatenode = self.instaTool.get_insta_account_info(user)
 
                         #Download profile Image
